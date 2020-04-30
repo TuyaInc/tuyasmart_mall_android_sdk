@@ -312,44 +312,48 @@ allprojects <span class="token punctuation">{</span>
 </code></pre>
 </li>
 <li><p>&#x8D44;&#x6E90;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>AppTheme<span class="token punctuation">&quot;</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Theme.AppCompat.Light.NoActionBar<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>app_bg_color<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>#FFFFFF<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</li>
+<li><p>&#x6DF7;&#x6DC6;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code># &#x5E94;&#x914D;&#x7F6E; build.gradle &#x91CC;&#x6240;&#x6709;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x6DF7;&#x6DC6;
+
+#fastJson
+-keep class com.alibaba.fastjson.**{*;}
+-dontwarn com.alibaba.fastjson.**    
+
+#mqtt
+-keep class com.tuya.smart.mqttclient.mqttv3.** { *; }
+-dontwarn com.tuya.smart.mqttclient.mqttv3.** 
+
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.**    
+
+-keep class okio.** { *; }
+-dontwarn okio.**    
+
+-keep class com.tuya.**{*;}
+-dontwarn com.tuya.**
+</code></pre></li>
+<li><p>Application &#x4E2D;&#x521D;&#x59CB;&#x5316;&#x6D82;&#x9E26;&#x667A;&#x80FD;&#x5546;&#x57CE;&#x4E1A;&#x52A1;&#x5305;</p>
+<pre class="language-"><code class="lang-java"> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TuyaSmartApp</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+     <span class="token annotation punctuation">@Override</span>
+     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token class-name">Fresco</span><span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token class-name">TuyaWrapper</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token class-name">TuyaHomeSdk</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token class-name">TuyaOptimusSdk</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre>
 </li>
 </ol>
-<p>```xml styles.xml
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="app_bg_color">#FFFFFF</item>
-    </style></p>
-<pre class="language-"><code>
-5. &#x6DF7;&#x6DC6;&#x914D;&#x7F6E;
-</code></pre><h1 id="&#x5E94;&#x914D;&#x7F6E;-buildgradle-&#x91CC;&#x6240;&#x6709;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x6DF7;&#x6DC6;"><a name="&#x5E94;&#x914D;&#x7F6E;-buildgradle-&#x91CC;&#x6240;&#x6709;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x6DF7;&#x6DC6;" class="plugin-anchor" href="#&#x5E94;&#x914D;&#x7F6E;-buildgradle-&#x91CC;&#x6240;&#x6709;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x6DF7;&#x6DC6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5E94;&#x914D;&#x7F6E; build.gradle &#x91CC;&#x6240;&#x6709;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x6DF7;&#x6DC6;</h1>
-<h1 id="fastjson"><a name="fastjson" class="plugin-anchor" href="#fastjson"><i class="fa fa-link" aria-hidden="true"></i></a>fastJson</h1>
-<p>  -keep class com.alibaba.fastjson.<strong>{*;}
-  -dontwarn com.alibaba.fastjson.</strong>    </p>
-<h1 id="mqtt"><a name="mqtt" class="plugin-anchor" href="#mqtt"><i class="fa fa-link" aria-hidden="true"></i></a>mqtt</h1>
-<p>  -keep class com.tuya.smart.mqttclient.mqttv3.<strong> { *; }
-  -dontwarn com.tuya.smart.mqttclient.mqttv3.</strong> </p>
-<p>  -keep class com.squareup.okhttp.<strong> { *; }
-  -keep interface com.squareup.okhttp.</strong> { <em>; }
-  -dontwarn com.squareup.okhttp.*</em>    </p>
-<p>  -keep class okio.<strong> { *; }
-  -dontwarn okio.</strong>    </p>
-<p>  -keep class com.tuya.<strong>{*;}
-  -dontwarn com.tuya.</strong></p>
-<pre class="language-"><code>
-6. Application &#x4E2D;&#x521D;&#x59CB;&#x5316;&#x6D82;&#x9E26;&#x667A;&#x80FD;&#x5546;&#x57CE;&#x4E1A;&#x52A1;&#x5305;
 
-    ``` java
-    public class TuyaSmartApp extends Application {
-
-        @Override
-        public void onCreate() {
-            super.onCreate();
-            Fresco.initialize(this);
-            TuyaWrapper.init(this);
-            TuyaHomeSdk.init(this);
-            TuyaOptimusSdk.init(this);
-        }
-    }
-</code></pre>
                                 
                                 </section>
                             
@@ -388,7 +392,7 @@ allprojects <span class="token punctuation">{</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"集成商城业务包","level":"1.4","depth":1,"next":{"title":"商城业务包功能","level":"1.5","depth":1,"ref":"","articles":[{"title":"商城业务可用性","level":"1.5.1","depth":2,"path":"resource/MallEnable.md","ref":"./resource/MallEnable.md","articles":[]},{"title":"商城首页链接","level":"1.5.2","depth":2,"path":"resource/MallHomeUrl.md","ref":"./resource/MallHomeUrl.md","articles":[]},{"title":"商城订单链接","level":"1.5.3","depth":2,"path":"resource/MallOrderUrl.md","ref":"./resource/MallOrderUrl.md","articles":[]},{"title":"打开商城容器","level":"1.5.4","depth":2,"path":"resource/OpenMall.md","ref":"./resource/OpenMall.md","articles":[]}]},"previous":{"title":"集成准备","level":"1.3","depth":1,"path":"resource/Preparation.md","ref":"./resource/Preparation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["js-sequence-diagram-full@>=0.3.1","prism","-highlight","anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"java":"java"},"ignore":["sequence"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"js-sequence-diagram-full":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"resource/Integrated.md","mtime":"2020-04-29T03:38:20.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T10:57:09.933Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"集成商城业务包","level":"1.4","depth":1,"next":{"title":"商城业务包功能","level":"1.5","depth":1,"ref":"","articles":[{"title":"商城业务可用性","level":"1.5.1","depth":2,"path":"resource/MallEnable.md","ref":"./resource/MallEnable.md","articles":[]},{"title":"商城首页链接","level":"1.5.2","depth":2,"path":"resource/MallHomeUrl.md","ref":"./resource/MallHomeUrl.md","articles":[]},{"title":"商城订单链接","level":"1.5.3","depth":2,"path":"resource/MallOrderUrl.md","ref":"./resource/MallOrderUrl.md","articles":[]},{"title":"打开商城容器","level":"1.5.4","depth":2,"path":"resource/OpenMall.md","ref":"./resource/OpenMall.md","articles":[]}]},"previous":{"title":"集成准备","level":"1.3","depth":1,"path":"resource/Preparation.md","ref":"./resource/Preparation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["js-sequence-diagram-full@>=0.3.1","prism","-highlight","anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"java":"java"},"ignore":["sequence"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"js-sequence-diagram-full":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"resource/Integrated.md","mtime":"2020-04-30T02:16:48.278Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T02:14:39.407Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
