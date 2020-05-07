@@ -10,12 +10,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0'
         classpath 'com.tuya.android.module:tymodule-config:0.4.0-SNAPSHOT'
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-    }
-    configurations.all {
-        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
 }
 
@@ -24,6 +20,9 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://maven-other.tuya.com/repository/maven-public/' }
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
 }
 

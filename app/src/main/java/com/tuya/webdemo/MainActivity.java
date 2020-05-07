@@ -16,12 +16,12 @@ import com.tuya.smart.android.common.utils.L;
 import com.tuya.smart.android.network.Business;
 import com.tuya.smart.android.network.http.BusinessResponse;
 import com.tuya.smart.android.user.api.ILogoutCallback;
+import com.tuya.smart.demo_login.base.utils.LoginHelper;
 import com.tuya.smart.home.sdk.TuyaHomeSdk;
 import com.tuya.smart.jsbridge.ITuyaMallSdk;
 import com.tuya.smart.jsbridge.base.webview.WebViewActivity;
 import com.tuya.smart.optimus.sdk.TuyaOptimusSdk;
 import com.tuya.smart.tuyamall.sdk.IQueryMallPageUrlCallback;
-import com.tuya.webdemo.base.utils.LoginHelper;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -25,20 +25,13 @@
             android:name="TUYA_SMART_SECRET"
             android:value="${TUYA_SMART_SECRET}" />
 
-        <activity android:name=".base.activity.SplashActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="tuyasmart_demo_main" />
             </intent-filter>
         </activity>
         <activity android:name=".WebActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".login.activity.LoginActivity" />
-        <activity android:name=".login.activity.LoginWithPhoneActivity" />
-        <activity android:name=".login.activity.AccountInputActivity" />
-        <activity android:name=".login.activity.AccountConfirmActivity" />
-        <activity android:name=".login.activity.CountryListActivity" />
     </application>
 
 </manifest>
