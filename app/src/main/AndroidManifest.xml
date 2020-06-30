@@ -32,6 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".WebActivity" />
+        <activity android:name=".MallActivity" />
+        <activity android:name=".SceneActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,10 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.soloader.SoLoader;
 import com.tuya.smart.home.sdk.TuyaHomeSdk;
+import com.tuya.smart.litho.mist.api.MistCore;
+import com.tuya.smart.litho.mist.config.DemoConfig;
 import com.tuya.smart.optimus.sdk.TuyaOptimusSdk;
 import com.tuya.smart.wrapper.api.TuyaWrapper;
 
@@ -30,6 +33,14 @@ public class TuyaSmartApp extends Application {
         TuyaWrapper.init(this);
         TuyaHomeSdk.init(this);
         TuyaOptimusSdk.init(this);
+        initMistLitho();
+    }
+
+    private void initMistLitho() {
+        SoLoader.init(this, false);
+        DemoConfig config = new DemoConfig();
+        config.create();
+        MistCore.getInstance().init(config, this);
     }
 
     @Override
