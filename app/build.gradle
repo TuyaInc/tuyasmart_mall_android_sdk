@@ -32,7 +32,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
 }
 
 dependencies {
@@ -46,8 +53,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // mall require start
-    implementation 'com.tuya.smart:tuyasmart:3.15.0-beta3'
-    implementation 'com.tuya.smart:tuyasmart-webcontainer:3.17.6r141-open'
+    implementation 'com.tuya.smart:tuyasmart:3.17.0'
+    implementation 'com.tuya.smart:tuyasmart-webcontainer:3.17.6r141-open-rc.2'
     implementation 'com.tuya.smart:tuyasmart-tuyamall-sdk:1.0.2'
     implementation 'com.tuya.smart:optimus:1.0.0'
     annotationProcessor 'com.tuya.smart:optimus-compiler:1.0.0'

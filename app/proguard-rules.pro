@@ -19,3 +19,20 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+ #fastJson
+-keep class com.alibaba.fastjson.**{*;}
+-dontwarn com.alibaba.fastjson.**
+
+#mqtt
+-keep class com.tuya.smart.mqttclient.mqttv3.** { *; }
+-dontwarn com.tuya.smart.mqttclient.mqttv3.**
+
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.**
+
+-keep class okio.** { *; }
+-dontwarn okio.**
+
+-keep class com.tuya.**{*;}
+-dontwarn com.tuya.**
