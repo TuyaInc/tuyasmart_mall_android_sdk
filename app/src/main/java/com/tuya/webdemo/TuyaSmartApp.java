@@ -8,7 +8,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.soloader.SoLoader;
 import com.tuya.smart.home.sdk.TuyaHomeSdk;
 import com.tuya.smart.litho.mist.api.MistCore;
-import com.tuya.smart.litho.mist.config.DemoConfig;
+import com.tuya.smart.litho.mist.config.MistConfig;
 import com.tuya.smart.optimus.sdk.TuyaOptimusSdk;
 import com.tuya.smart.wrapper.api.TuyaWrapper;
 
@@ -38,7 +38,7 @@ public class TuyaSmartApp extends Application {
 
     private void initMistLitho() {
         SoLoader.init(this, false);
-        DemoConfig config = new DemoConfig();
+        MistConfig config = new MistConfig();
         config.create();
         MistCore.getInstance().init(config, this);
     }
