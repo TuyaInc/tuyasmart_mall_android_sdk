@@ -10,6 +10,7 @@ import com.tuya.smart.home.sdk.TuyaHomeSdk;
 import com.tuya.smart.litho.mist.api.MistCore;
 import com.tuya.smart.litho.mist.config.MistConfig;
 import com.tuya.smart.optimus.sdk.TuyaOptimusSdk;
+import com.tuya.smart.sdk.TuyaSdk;
 import com.tuya.smart.wrapper.api.TuyaWrapper;
 
 public class TuyaSmartApp extends Application {
@@ -29,7 +30,6 @@ public class TuyaSmartApp extends Application {
 
     private void init() {
         Fresco.initialize(this);
-
         TuyaWrapper.init(this);
         TuyaHomeSdk.init(this);
         TuyaOptimusSdk.init(this);
